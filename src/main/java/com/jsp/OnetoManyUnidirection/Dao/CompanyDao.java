@@ -38,4 +38,24 @@ public class CompanyDao {
 		entityTransaction.commit();
 	}
 	
+	public void delete(int id)
+	{
+		EntityManager entityManager=getEntityManager();
+		EntityTransaction entityTransaction=entityManager.getTransaction();
+		
+		entityTransaction.begin();
+		
+		Company company=entityManager.find(Company.class,id);
+		
+		 if (company != null) {
+		       
+		        List<Employee> employees = company.getList();
+		        for (Employee employee : employees) {
+		            entityManager.remove(employee);
+		        }
+		     
+		        entityManager.remove(company);
+		    }
+		entityTransaction.commit();
+	}
 }
