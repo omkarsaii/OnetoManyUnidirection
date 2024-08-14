@@ -28,7 +28,7 @@ public class CompanyDao {
 	
 		entityTransaction.begin();
 		
-		List<Employee>list=company.getList();
+		List<Employee>list=company.getList(); 
 		
 		for(Employee employee:list)
 		{
